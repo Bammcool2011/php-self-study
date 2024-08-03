@@ -1,3 +1,19 @@
+<?php
+$dsn = 'mysql:dbname=mydatabase;host=mysql;port=3306';
+$username = 'admin';
+$password = '1234';
+
+try {
+  $connection = new PDO($dsn, $username, $password);
+  $singer = $connection->prepare("SELECT * FROM porter_robinson");
+  $singer->execute();
+
+  $songs = $singer->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo "Connection failed: " . $e->getMessage() . " (" . $e->getCode() . ")";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,15 +43,23 @@
     </section>
 
     <section class="bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-2xl font-semibold mb-4 text-center">His works<h2>
-          <div class="flex flex-wrap">
-            <div class="w-1/3">01</div>
-            <div class="w-1/3">02</div>
-            <div class="w-1/3">03</div>
+      <h2 class="text-2xl font-semibold mb-4 text-center">His works</h2>
+      <div class="flex flex-wrap">
+        <?php foreach ($songs as $data) {
+          $image = ($data["image"]);
+          $title = ($data["title"]);
+          $author = ($data["author"]);
+          $desc = ($data["desc"]);
+          ?>
+          <div class="w-1/3 p-4">
+            <img src='<?php echo $image; ?>' class="w-full rounded-lg mb-4">
+            <div class="text-xl font-bold mb-2"><?php echo $title; ?></div>
+            <div class="text-lg italic mb-2"><?php echo $author; ?></div>
+            <div class="text-base text-gray-700"><?php echo $desc; ?></div>
           </div>
-
+        <?php } ?>
+      </div>
     </section>
-
   </div>
 </body>
 
