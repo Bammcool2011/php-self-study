@@ -31,7 +31,7 @@ try {
     </header>
 
     <section class="bg-white shadow-md rounded-lg p-6 mb-8">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Who is Porter Robinson?</h2>
+      <h2 class="text-2xl font-bold mb-4 text-center">Who is Porter Robinson?</h2>
       <p class="text-justify">
         Porter Robinson is an American electronic music producer, singer, and DJ known for his emotive and
         genre-blending sound. Born on July 15, 1992, in Atlanta, Georgia, he gained prominence with his 2011 single
@@ -43,7 +43,7 @@ try {
     </section>
 
     <section class="bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-2xl font-semibold mb-4 text-center">His works</h2>
+      <h2 class="text-2xl font-bold mb-4 text-center">His works</h2>
       <div class="flex flex-wrap">
         <?php foreach ($songs as $data) {
           $image = ($data["image"]);
@@ -51,13 +51,14 @@ try {
           $author = ($data["author"]);
           $desc = ($data["desc"]);
           ?>
-          <div class="w-1/3 p-4">
-            <img src='<?php echo $image; ?>' class="w-full rounded-lg mb-4">
-            <div class="text-xl font-bold mb-2"><?php echo $title; ?></div>
-            <div class="text-lg italic mb-2"><?php echo $author; ?></div>
-            <div class="text-base text-gray-700"><?php echo $desc; ?></div>
+          <div class="flex flex-col w-1/3 p-4">
+            <img src='<?php echo $image; ?>' class="flex self-center rounded-lg mb-4 w-[360px]">
+            <div class="text-xl font-bold text-center"><?php echo $title; ?></div>
+            <div class="text-lg text-center italic mb-2"><?php echo $author; ?></div>
+            <div class="self-center text-justify w-[380px]"><?php echo $desc; ?></div>
           </div>
         <?php } ?>
+
       </div>
     </section>
   </div>
