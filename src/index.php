@@ -62,6 +62,13 @@ try {
       </div>
     </section>
   </div>
+
+  <footer>
+    <div class="bg-gray-800 text-white text-center py-4">
+      <p>Part of ITE220 - Web Development II (Instructor: Mohammadamin Dadras) by Pumin Whungprasit</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>
